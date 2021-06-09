@@ -16,6 +16,7 @@ namespace Hibasys.BookStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,14 +27,41 @@ namespace Hibasys.BookStore
                 app.UseDeveloperExceptionPage();
             }
 
+            //app.Use(async (context, next) =>
+            //  {
+            //      await context.Response.WriteAsync("This is my First Middle Ware \n");
+            //      await next();
+
+            //      await context.Response.WriteAsync("This is my First Middle Ware Response");
+            //  });
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("This is my Second Middle Ware \n");
+            //    await next();
+
+            //    await context.Response.WriteAsync("This is my Second Middle Ware Response \n");
+            //});
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("This is my Third Middle Ware \n");
+            //    await next();
+            //});
+
             app.UseRouting();
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World ! \n");
+            //    });
+            //});
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
