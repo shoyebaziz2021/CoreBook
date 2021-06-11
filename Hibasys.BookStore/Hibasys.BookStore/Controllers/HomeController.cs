@@ -8,9 +8,13 @@ namespace Hibasys.BookStore.Controllers
 {
     public class HomeController : Controller
     {
-         public string Index()
+         public ViewResult Index()
         {
-            return "Hello From Controller Index";
+            return View();
+        }
+        public ViewResult AboutUs()
+        {
+            return View();
         }
     }
 }
